@@ -5,8 +5,7 @@ namespace Vanderbilt\ExportPublicReports;
 class ExportPublicReports extends \ExternalModules\AbstractExternalModule
 {
 	public function redcap_every_page_top() {
-		$normalizedURI = str_replace('surveys/index.php?', 'surveys/?', $_SERVER['REQUEST_URI']);
-		if (!str_starts_with($normalizedURI, '/surveys/?__report=')) {
+		if (!$this->isSurveyPage() || !isset($_GET['__report'])) {
 			return;
 		}
 

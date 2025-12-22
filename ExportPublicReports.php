@@ -38,11 +38,11 @@ class ExportPublicReports extends \ExternalModules\AbstractExternalModule
 								return false
 							}
 						}
-					}).appendTo(filterDiv)
+					}).prependTo(filterDiv)
 
 					$('<button>', {
 						css: {
-							marginLeft: '10px',
+							marginRight: '10px',
 						},
 						text: 'Export as CSV',
 					}).appendTo(link)

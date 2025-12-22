@@ -1,0 +1,23 @@
+{
+	"name": "Export Public Reports",
+	"namespace": "Vanderbilt\\ExportPublicReports",
+	"framework-version": 16,
+	"description": "Adds an 'Export as CSV' button to public reports.  It is recommended to only enable this module on projects with modestly sized public reports.  Allowing the public to fully export larger projects may cause system performance issues.",
+	"authors": [
+		{
+			"name": "Mark McEver",
+			"email": "datacore@vumc.org",
+			"institution": "Vanderbilt University Medical Center"
+		}
+	],
+	"no-auth-pages": [
+		"export-public-report"
+	],
+	"project-settings": [
+		{
+			"key": "report-size-limit",
+			"name": "<b>Report Size Limit</b> - Reports must have a result count lower than this limit to allow export.  If unspecified, exports will be limited to reports with less than 100k rows",
+			"type": "text"
+		}
+	]
+}

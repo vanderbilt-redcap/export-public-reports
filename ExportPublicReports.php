@@ -14,7 +14,11 @@ class ExportPublicReports extends \ExternalModules\AbstractExternalModule
 			(() => {
 				// Use setInterval() to wait until the containing div becomes visible on the page.
 				const intervalId = setInterval(() => {
-					const filterDiv = $('.report_pagenum_div').first()
+					const filterDiv = $('#report_table_filter')
+					filterDiv.css({
+						minWidth: '270px'
+					})
+
 					if (filterDiv.length === 0) {
 						return
 					}
@@ -27,13 +31,8 @@ class ExportPublicReports extends \ExternalModules\AbstractExternalModule
 					const link = $('<a>', {
 						href: <?=json_encode($this->getUrl('export-public-report.php', true))?> + '&reportHash=' + reportHash,
 						target: 'about:blank',
-						css: {
-							float: 'right',
-							marginTop: '1px'
-						},
 						click(){
-							const resultCount = parseInt(filterDiv.find('.float-start span').last().text().replaceAll(',', ''))
-
+							const resultCount = parseInt($('.report-results-returned b').text().replaceAll(',', ''))
 							if(resultCount > <?=$this->getReportSizeLimit()?>){
 								alert('This report cannot be exported because it is larger than the export limit.')
 								return false
@@ -42,6 +41,9 @@ class ExportPublicReports extends \ExternalModules\AbstractExternalModule
 					}).appendTo(filterDiv)
 
 					$('<button>', {
+						css: {
+							marginLeft: '10px',
+						},
 						text: 'Export as CSV',
 					}).appendTo(link)
 				}, 50)

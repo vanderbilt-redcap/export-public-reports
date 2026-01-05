@@ -1,0 +1,2 @@
+# Export Public Reports
+This module adds an "Export as CSV" button on public reports.  The button points to a URL that can be used for automation/scripting if desired.  By default, exporting is limited to reports with less than 100k results to ensure server load is considered before allowing public export on very large reports.
